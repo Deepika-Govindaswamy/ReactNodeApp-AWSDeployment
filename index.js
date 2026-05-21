@@ -28,5 +28,11 @@ app.get("/tasks", async (req, res) => {
 });
 
 app.listen (port, () => {
+    console.log({
+            PORT: process.env.PORT,
+            DB_NAME: process.env.DB_NAME,
+            DB_URL_EXISTS: !!process.env.DB_URL
+        });
+
     console.log (`Server started on ${port}`)
 })
