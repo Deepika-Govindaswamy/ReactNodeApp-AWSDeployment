@@ -1,0 +1,39 @@
+
+name: Deploy React app to AWS S3
+
+on:
+  push:
+    branches: [frontend]
+
+env:
+  NODE_VERSION: '20.19.0'
+  AWS_REGION: 'eu-west-2'
+
+jobs:
+  deploy:
+    runs-on: [ ubuntu-latest ]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: NodeJS Setup
+        uses: actions/setup-node@v6
+        with: 
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Dependency Installation
+        run: npm isntall
+
+      - name: App Build
+        run: npm run Build
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v6.1.0
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Deploy to AWS S3
+        run: aws s3 sync build s3://react-deployment-cicd-automated --delete
