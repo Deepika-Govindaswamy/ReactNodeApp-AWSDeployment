@@ -19,7 +19,7 @@ async function connectToDatabase() {
     console.log("Connected to MongoDB:", databaseName);
   }
 
-  return db;
+  return db; 
 }
 
 module.exports = { connectToDatabase };
