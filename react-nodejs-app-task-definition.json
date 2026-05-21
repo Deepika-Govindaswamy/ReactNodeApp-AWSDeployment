@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:821465445175:task-definition/react-nodejs-app-task-definition:2",
+    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:821465445175:task-definition/react-nodejs-app-task-definition:5",
     "containerDefinitions": [
         {
             "name": "react-nodejs-app-container",
-            "image": "821465445175.dkr.ecr.eu-west-2.amazonaws.com/cicd-deployed-images:latest",
+            "image": "821465445175.dkr.ecr.eu-west-2.amazonaws.com/cicd-deployed-images:fe48aa68f4124ece260ea4a0d19b9af13c1fe9e5",
             "cpu": 0,
             "portMappings": [
                 {
@@ -40,7 +40,7 @@
     "taskRoleArn": "arn:aws:iam::821465445175:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::821465445175:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 2,
+    "revision": 5,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -90,8 +90,8 @@
     ],
     "cpu": "512",
     "memory": "1024",
-    "registeredAt": "2026-05-21T14:16:26.180Z",
-    "registeredBy": "arn:aws:iam::821465445175:root",
+    "registeredAt": "2026-05-21T14:59:15.462Z",
+    "registeredBy": "arn:aws:iam::821465445175:user/Deepika",
     "enableFaultInjection": false,
     "tags": []
 }
