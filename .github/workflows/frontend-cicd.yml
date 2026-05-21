@@ -23,7 +23,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Dependency Installation
-        run: npm isntall
+        run: npm install
 
       - name: App Build
         run: npm run build
