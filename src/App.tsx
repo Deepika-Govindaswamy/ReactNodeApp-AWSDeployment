@@ -24,7 +24,7 @@ export default function TaskManager() {
   }, [editingId]);
 
   useEffect(() => {
-  fetch("http://localhost:5001/tasks")
+  fetch("/tasks")
     .then((res) => res.json())
     .then((data: Task[]) => {
       setTasks(data);
