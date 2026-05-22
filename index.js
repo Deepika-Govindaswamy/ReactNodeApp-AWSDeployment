@@ -11,7 +11,7 @@ const { connectToDatabase } = require('./database');
 
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
-});
+}); 
 
 app.get("/tasks", async (req, res) => {
 
