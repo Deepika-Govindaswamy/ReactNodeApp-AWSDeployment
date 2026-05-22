@@ -24,6 +24,33 @@ app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
 
+app.post('/tasks', async (req, res) => {
+
+    try {
+
+        const db = await connectToDatabase();
+
+        const newTask = req.body;
+
+        const result = await db
+            .collection('tasks')
+            .insertOne(newTask);
+
+        res.status(201).json({
+            message: 'Task added',
+            insertedId: result.insertedId
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            message: 'Error adding task'
+        });
+    }
+});
+
 app.get('/tasks', async (req, res) => {
   try {
     const db = await connectToDatabase();
