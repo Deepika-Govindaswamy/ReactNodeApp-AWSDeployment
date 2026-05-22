@@ -3,7 +3,7 @@ name: Deploy to backend of app to Amazon ECS using CI/CD pipeline
 
 on:
   push:
-    branches: [ backend ]
+    branches: [ backend, main ]
 
 env:
   AWS_REGION: 'eu-west-2'
