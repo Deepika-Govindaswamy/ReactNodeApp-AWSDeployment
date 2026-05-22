@@ -8,7 +8,7 @@ interface Task {
 }
 
 type Filter = "all" | "active" | "completed";
-
+ 
 
 export default function TaskManager() {
   const [tasks, setTasks] = useState<Task[]>([]);
