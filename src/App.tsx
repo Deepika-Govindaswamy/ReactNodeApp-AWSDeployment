@@ -24,7 +24,7 @@ export default function TaskManager() {
   }, [editingId]);
 
   useEffect(() => {
-  fetch("/tasks")
+  fetch("https://d1isxs8hczjncc.cloudfront.net/tasks")
     .then((res) => res.json())
     .then((data: Task[]) => {
       setTasks(data);
