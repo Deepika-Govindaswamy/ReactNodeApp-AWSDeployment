@@ -8,17 +8,17 @@ app.use(cors());
 
 const { connectToDatabase } = require('./database');
 
-// CloudFront secret header middleware
-app.use((req, res, next) => {
-  // Bypass check for ALB health checks
-  if (req.path === '/health') return next();
+// // CloudFront secret header middleware
+// app.use((req, res, next) => {
+//   // Bypass check for ALB health checks
+//   if (req.path === '/health') return next();
 
-  const secret = req.headers['x-cloudfront-secret'];
-  if (!secret || secret !== process.env.CLOUDFRONT_SECRET) {
-    return res.status(403).json({ error: 'Forbidden' });
-  }
-  next();
-});
+//   const secret = req.headers['x-cloudfront-secret'];
+//   if (!secret || secret !== process.env.CLOUDFRONT_SECRET) {
+//     return res.status(403).json({ error: 'Forbidden' });
+//   }
+//   next();
+// });
 
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
