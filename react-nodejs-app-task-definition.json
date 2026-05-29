@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:821465445175:task-definition/react-nodejs-app-task-definition:19",
+    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:821465445175:task-definition/react-nodejs-app-task-definition:22",
     "containerDefinitions": [
         {
             "name": "react-nodejs-app-container",
-            "image": "821465445175.dkr.ecr.eu-west-2.amazonaws.com/cicd-deployed-images:c18a4fc0e587ea0415c2c3f7dfbd1caf5650e432",
+            "image": "821465445175.dkr.ecr.eu-west-2.amazonaws.com/cicd-deployed-images:51311be78c94e9e3abbd7a874f0cb848a96c1a3b",
             "cpu": 0,
             "portMappings": [
                 {
@@ -17,30 +17,32 @@
             "essential": true,
             "environment": [
                 {
+                    "name": "DB_NAME",
+                    "value": "postgres"
+                },
+                {
+                    "name": "AWS_REGION",
+                    "value": "eu-west-2"
+                },
+                {
                     "name": "PORT",
                     "value": "5001"
                 },
                 {
-                    "name": "DB_NAME",
-                    "value": "tasks-db"
+                    "name": "DB_HOST",
+                    "value": "database-1.cluster-c32samc0mnw9.eu-west-2.rds.amazonaws.com"
+                },
+                {
+                    "name": "DB_PORT",
+                    "value": "5432"
+                },
+                {
+                    "name": "DB_USER",
+                    "value": "postgres"
                 }
             ],
             "mountPoints": [],
             "volumesFrom": [],
-            "secrets": [
-                {
-                    "name": "DB_PASSWORD",
-                    "valueFrom": "arn:aws:secretsmanager:eu-west-2:821465445175:secret:mongodb-cred-qYc35q:password::"
-                },
-                {
-                    "name": "DB_URL",
-                    "valueFrom": "arn:aws:secretsmanager:eu-west-2:821465445175:secret:mongodb-cred-qYc35q:connectionString::"
-                },
-                {
-                    "name": "DB_USERNAME",
-                    "valueFrom": "arn:aws:secretsmanager:eu-west-2:821465445175:secret:mongodb-cred-qYc35q:username::"
-                }
-            ],
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
@@ -48,8 +50,7 @@
                     "awslogs-create-group": "true",
                     "awslogs-region": "eu-west-2",
                     "awslogs-stream-prefix": "ecs"
-                },
-                "secretOptions": []
+                }
             },
             "systemControls": []
         }
@@ -58,7 +59,7 @@
     "taskRoleArn": "arn:aws:iam::821465445175:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::821465445175:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 19,
+    "revision": 22,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -73,9 +74,6 @@
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
-        },
-        {
-            "name": "ecs.capability.secrets.asm.environment-variables"
         },
         {
             "name": "com.amazonaws.ecs.capability.task-iam-role"
@@ -108,7 +106,7 @@
     ],
     "cpu": "512",
     "memory": "1024",
-    "registeredAt": "2026-05-29T09:24:53.197Z",
+    "registeredAt": "2026-05-29T10:51:31.628Z",
     "registeredBy": "arn:aws:iam::821465445175:root",
     "enableFaultInjection": false,
     "tags": []

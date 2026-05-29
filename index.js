@@ -28,9 +28,9 @@ app.get('/health', (req, res) => {
 
 app.get('/tasks', async (req, res) => {
   try {
-    const db = await connectToDatabase();
-    const tasks = await db.collection("test-node-apps").find({}).toArray();
-    res.json(tasks);
+    const pool = await connectToDatabase();
+    const result = await pool.query('SELECT * FROM tasks'); // adjust table name as needed
+    res.json(result.rows);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error fetching tasks" });
