@@ -8,7 +8,7 @@ const port = process.env.PORT;
 const cors = require('cors');
 app.use(cors());
 
-// const { connectToDatabase } = require('./database');
+const { connectToDatabase } = require('./database');
 
 // // CloudFront secret header middleware
 // app.use((req, res, next) => {
