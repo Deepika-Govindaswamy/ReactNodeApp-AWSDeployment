@@ -29,6 +29,7 @@ app.get('/health', (req, res) => {
 app.get('/tasks', async (req, res) => {
   try {
     const pool = await connectToDatabase();
+    if (pool) {console.log(`pool ok`);}
     const result = await pool.query('SELECT * FROM tasks'); // adjust table name as needed
     res.json(result.rows);
   } catch (error) {
