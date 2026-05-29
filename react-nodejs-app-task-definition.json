@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:821465445175:task-definition/react-nodejs-app-task-definition:10",
+    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:821465445175:task-definition/react-nodejs-app-task-definition:19",
     "containerDefinitions": [
         {
             "name": "react-nodejs-app-container",
@@ -29,16 +29,16 @@
             "volumesFrom": [],
             "secrets": [
                 {
+                    "name": "DB_PASSWORD",
+                    "valueFrom": "arn:aws:secretsmanager:eu-west-2:821465445175:secret:mongodb-cred-qYc35q:password::"
+                },
+                {
                     "name": "DB_URL",
-                    "valueFrom": "arn:aws:secretsmanager:eu-west-2:821465445175:secret:mongodb-atlas-cred-Zovwsv:connectionString::"
+                    "valueFrom": "arn:aws:secretsmanager:eu-west-2:821465445175:secret:mongodb-cred-qYc35q:connectionString::"
                 },
                 {
                     "name": "DB_USERNAME",
-                    "valueFrom": "arn:aws:secretsmanager:eu-west-2:821465445175:secret:mongodb-atlas-cred-Zovwsv:username::"
-                },
-                {
-                    "name": "DB_PASSWORD",
-                    "valueFrom": "arn:aws:secretsmanager:eu-west-2:821465445175:secret:mongodb-atlas-cred-Zovwsv:password::"
+                    "valueFrom": "arn:aws:secretsmanager:eu-west-2:821465445175:secret:mongodb-cred-qYc35q:username::"
                 }
             ],
             "logConfiguration": {
@@ -48,7 +48,8 @@
                     "awslogs-create-group": "true",
                     "awslogs-region": "eu-west-2",
                     "awslogs-stream-prefix": "ecs"
-                }
+                },
+                "secretOptions": []
             },
             "systemControls": []
         }
@@ -57,7 +58,7 @@
     "taskRoleArn": "arn:aws:iam::821465445175:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::821465445175:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 10,
+    "revision": 19,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -95,8 +96,8 @@
     "placementConstraints": [],
     "compatibilities": [
         "EC2",
-        "FARGATE",
-        "MANAGED_INSTANCES"
+        "MANAGED_INSTANCES",
+        "FARGATE"
     ],
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
@@ -107,8 +108,8 @@
     ],
     "cpu": "512",
     "memory": "1024",
-    "registeredAt": "2026-05-21T16:40:23.035Z",
-    "registeredBy": "arn:aws:iam::821465445175:user/Deepika",
+    "registeredAt": "2026-05-29T09:24:53.197Z",
+    "registeredBy": "arn:aws:iam::821465445175:root",
     "enableFaultInjection": false,
     "tags": []
 }

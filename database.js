@@ -1,3 +1,6 @@
+
+
+
 const { MongoClient } = require("mongodb");
 
 let db = null;
@@ -21,5 +24,23 @@ async function connectToDatabase() {
 
   return db; 
 }
+
+
+// const { Client } = require("pg");
+
+// async function connectToDatabase() {
+  
+//   const con = new Client ({
+
+//     host: "localhost",
+//     user: "postgres",
+//     port: 5432,
+//     password:"deepdeep",
+//     database:"todo-node"
+
+//   })
+
+//   con.connect().then( () => console.log("Connected"));
+// }
 
 module.exports = { connectToDatabase };
